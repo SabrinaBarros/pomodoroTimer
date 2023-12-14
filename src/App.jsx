@@ -2,9 +2,11 @@ import React from "react"
 
 class App extends React.Component {
 
+  shouldCountDown = true;
+
   constructor() {
     super()
-    this.state = {time: 5};
+    this.state = {time: 1500};
   };
 
   componentDidMount() {
@@ -14,7 +16,9 @@ class App extends React.Component {
   _startTimer() {
     const interval = setInterval(() => {
 
-      !this.state.time ? clearInterval(interval) : this.setState({time: this.state.time - 1})
+      if(this.shouldCountDown) {
+        !this.state.time ? clearInterval(interval) : this.setState({time: this.state.time - 1})
+      }
 
     }, 1000);
   };
@@ -27,13 +31,24 @@ class App extends React.Component {
     return Math.floor(seconds % 60);
   };
 
+  _refresh () {
+    this.setState({time: 1500});
+  }
+
+  _togglePlay () {
+    this.shouldCountDown = !this.shouldCountDown;
+  }
+
   render() {
     return (
       <>
+      <button onClick={this._refresh.bind(this)}>Refresh</button>
         <span>
           {this._minutesMask(this.state.time)}:{this._secondsMask(this.state.time)}
         </span>
-        <button onClick={() => this.setState({time: 1500})}>Refresh</button>
+        <button onClick={this._togglePlay.bind(this)}>
+          Play | Pause
+        </button>
       </>
   )}
 };
