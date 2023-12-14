@@ -3,6 +3,7 @@ import React from "react"
 class App extends React.Component {
 
   shouldCountDown = true;
+  currentModeTime = 0;
 
   constructor() {
     super()
@@ -32,16 +33,25 @@ class App extends React.Component {
   };
 
   _refresh () {
-    this.setState({time: 1500});
+    this.setState({time: this.currentModeTime});
   }
 
   _togglePlay () {
     this.shouldCountDown = !this.shouldCountDown;
   }
 
+  _pomodoro (totalModeTime) {
+    this.setState({time: totalModeTime});
+    this.currentModeTime = i;
+  }
+
   render() {
     return (
       <>
+      <button onClick={() => this._pomodoro(1500)}>Focus Time</button>
+      <button onClick={() => this._pomodoro(300)}>Short Break</button>
+      <button onClick={() => this._pomodoro(900)}>Long Break</button>
+      <br></br>
       <button onClick={this._refresh.bind(this)}>Refresh</button>
         <span>
           {this._minutesMask(this.state.time)}:{this._secondsMask(this.state.time)}
