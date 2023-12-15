@@ -3,11 +3,11 @@ import React from "react"
 class App extends React.Component {
 
   shouldCountDown = true;
-  currentModeTime = 0;
+  currentModeTime = 1500;
 
   constructor() {
     super()
-    this.state = {time: 1500};
+    this.state = {time: 5};
   };
 
   componentDidMount() {
@@ -15,10 +15,10 @@ class App extends React.Component {
   };
 
   _startTimer() {
-    const interval = setInterval(() => {
+    setInterval(() => {
 
       if(this.shouldCountDown) {
-        !this.state.time ? clearInterval(interval) : this.setState({time: this.state.time - 1})
+        !this.state.time ? this.shouldCountDown = false : this.setState({time: this.state.time - 1})
       }
 
     }, 1000);
@@ -32,17 +32,17 @@ class App extends React.Component {
     return Math.floor(seconds % 60);
   };
 
-  _refresh () {
+  _refresh() {
     this.setState({time: this.currentModeTime});
   }
 
-  _togglePlay () {
+  _togglePlay() {
     this.shouldCountDown = !this.shouldCountDown;
   }
 
-  _pomodoro (totalModeTime) {
+  _pomodoro(totalModeTime) {
     this.setState({time: totalModeTime});
-    this.currentModeTime = i;
+    this.currentModeTime = totalModeTime;
   }
 
   render() {
