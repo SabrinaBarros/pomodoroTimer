@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 class App extends React.Component {
 
@@ -6,8 +6,8 @@ class App extends React.Component {
   currentModeTime = 1500;
 
   constructor() {
-    super()
-    this.state = {time: 5};
+    super();
+    this.state = {time: 1500, counter: 0};
   };
 
   componentDidMount() {
@@ -18,7 +18,16 @@ class App extends React.Component {
     setInterval(() => {
 
       if(this.shouldCountDown) {
-        !this.state.time ? this.shouldCountDown = false : this.setState({time: this.state.time - 1})
+
+        if(!this.state.time) {
+
+          this.shouldCountDown = false;
+          this.setState({counter: this.state.counter + 1});
+
+        } else {
+          this.setState({time: this.state.time - 1});
+        }
+
       }
 
     }, 1000);
@@ -34,16 +43,16 @@ class App extends React.Component {
 
   _refresh() {
     this.setState({time: this.currentModeTime});
-  }
+  };
 
   _togglePlay() {
     this.shouldCountDown = !this.shouldCountDown;
-  }
+  };
 
   _pomodoro(totalModeTime) {
     this.setState({time: totalModeTime});
     this.currentModeTime = totalModeTime;
-  }
+  };
 
   render() {
     return (
@@ -59,6 +68,8 @@ class App extends React.Component {
         <button onClick={this._togglePlay.bind(this)}>
           Play | Pause
         </button>
+        <br></br>
+        <span>{'#' + this.state.counter}</span>
       </>
   )}
 };
