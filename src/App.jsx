@@ -2,7 +2,7 @@ import React from "react";
 
 class App extends React.Component {
 
-  shouldCountDown = true;
+  shouldCountDown = false;
   currentModeTime = 1500;
 
   constructor() {
