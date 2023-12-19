@@ -1,4 +1,5 @@
 import React from "react";
+import Timer from "./Timer"
 
 class App extends React.Component {
 
@@ -33,14 +34,6 @@ class App extends React.Component {
     }, 1000);
   };
 
-  _minutesMask(seconds) {
-    return Math.floor(seconds / 60);
-  };
-
-  _secondsMask(seconds) {
-    return Math.floor(seconds % 60);
-  };
-
   _refresh() {
     this.setState({time: this.currentModeTime});
     this.shouldCountDown = false;
@@ -59,14 +52,12 @@ class App extends React.Component {
   render() {
     return (
       <>
-      <button data-test='focus-btn' onClick={() => this._pomodoro(1500)}>Focus Time</button>
-      <button data-test='short-break-btn' onClick={() => this._pomodoro(300)}>Short Break</button>
-      <button data-test='long-break-btn' onClick={() => this._pomodoro(900)}>Long Break</button>
-      <br></br>
-      <button data-test='refresh-btn' onClick={this._refresh.bind(this)}>Refresh</button>
-        <span data-test='timer'>
-          {this._minutesMask(this.state.time)}:{this._secondsMask(this.state.time)}
-        </span>
+        <button data-test='focus-btn' onClick={() => this._pomodoro(1500)}>Focus Time</button>
+        <button data-test='short-break-btn' onClick={() => this._pomodoro(300)}>Short Break</button>
+        <button data-test='long-break-btn' onClick={() => this._pomodoro(900)}>Long Break</button>
+        <br></br>
+        <button data-test='refresh-btn' onClick={this._refresh.bind(this)}>Refresh</button>
+        <Timer time={this.state.time}/>
         <button data-test='toggle-btn' onClick={this._togglePlay.bind(this)}>
           Play | Pause
         </button>
