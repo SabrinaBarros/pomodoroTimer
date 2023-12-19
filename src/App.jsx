@@ -43,6 +43,7 @@ class App extends React.Component {
 
   _refresh() {
     this.setState({time: this.currentModeTime});
+    this.shouldCountDown = false;
   };
 
   _togglePlay() {
@@ -52,24 +53,25 @@ class App extends React.Component {
   _pomodoro(totalModeTime) {
     this.setState({time: totalModeTime});
     this.currentModeTime = totalModeTime;
+    this.shouldCountDown = false;
   };
 
   render() {
     return (
       <>
-      <button onClick={() => this._pomodoro(1500)}>Focus Time</button>
-      <button onClick={() => this._pomodoro(300)}>Short Break</button>
-      <button onClick={() => this._pomodoro(900)}>Long Break</button>
+      <button data-test='focus-btn' onClick={() => this._pomodoro(1500)}>Focus Time</button>
+      <button data-test='short-break-btn' onClick={() => this._pomodoro(300)}>Short Break</button>
+      <button data-test='long-break-btn' onClick={() => this._pomodoro(900)}>Long Break</button>
       <br></br>
-      <button onClick={this._refresh.bind(this)}>Refresh</button>
-        <span>
+      <button data-test='refresh-btn' onClick={this._refresh.bind(this)}>Refresh</button>
+        <span data-test='timer'>
           {this._minutesMask(this.state.time)}:{this._secondsMask(this.state.time)}
         </span>
-        <button onClick={this._togglePlay.bind(this)}>
+        <button data-test='toggle-btn' onClick={this._togglePlay.bind(this)}>
           Play | Pause
         </button>
         <br></br>
-        <span>{'#' + this.state.counter}</span>
+        <span data-test='counter'>{'#' + this.state.counter}</span>
       </>
   )}
 };
