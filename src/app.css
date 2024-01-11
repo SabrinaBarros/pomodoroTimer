@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  font-weight: bold;
+  padding: 10px 20px 10px;
+  border-radius: 10px 10px 0 0;
+  transition: all .5s ease;
+  color: #95999c;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.tab-btn:hover {
+  background-color: #f0f0f086;
+  color: #BC4749;
+  cursor: pointer;
+}
+
+.tab-btn---current, .tab-btn---current:hover {
+  color: #6A994E;
+  border-bottom: 2px solid #A7C957;
+}

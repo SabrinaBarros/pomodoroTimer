@@ -1,5 +1,6 @@
 import React from "react";
-import Timer from "./Timer"
+import Timer from "./components/timer/Timer";
+import "./app.css";
 
 class App extends React.Component {
 
@@ -13,6 +14,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this._startTimer();
+    this._currentTab();
   };
 
   _startTimer() {
@@ -49,12 +51,29 @@ class App extends React.Component {
     this.shouldCountDown = false;
   };
 
+  _currentTab() {
+
+    const tabs = document.querySelectorAll('.tab-btn');
+
+    tabs.forEach(tab => {
+
+      tab.addEventListener('click', () => {
+
+        tabs.forEach(tab => tab.classList.remove('tab-btn---current'));
+        tab.classList.add('tab-btn---current');
+
+      });
+
+    });
+
+  };
+
   render() {
     return (
       <>
-        <button data-test='focus-btn' onClick={() => this._pomodoro(1500)}>Focus Time</button>
-        <button data-test='short-break-btn' onClick={() => this._pomodoro(300)}>Short Break</button>
-        <button data-test='long-break-btn' onClick={() => this._pomodoro(900)}>Long Break</button>
+        <button className="tab-btn tab-btn---current" data-test='focus-btn' onClick={() => this._pomodoro(1500)}>Focus Time</button>
+        <button className="tab-btn" data-test='short-break-btn' onClick={() => this._pomodoro(300)}>Short Break</button>
+        <button className="tab-btn" data-test='long-break-btn' onClick={() => this._pomodoro(900)}>Long Break</button>
         <br></br>
         <button data-test='refresh-btn' onClick={this._refresh.bind(this)}>Refresh</button>
         <Timer time={this.state.time}/>
