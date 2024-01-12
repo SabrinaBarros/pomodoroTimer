@@ -1,6 +1,8 @@
 import React from "react";
 import Timer from "./components/timer/Timer";
 import "./app.css";
+import RefreshIcon from "./icons/refresh.svg?react";
+import PlayIcon from "./icons/play.svg?react";
 
 class App extends React.Component {
 
@@ -75,11 +77,13 @@ class App extends React.Component {
         <button className="tab-btn" data-test='short-break-btn' onClick={() => this._pomodoro(300)}>Short Break</button>
         <button className="tab-btn" data-test='long-break-btn' onClick={() => this._pomodoro(900)}>Long Break</button>
         <br></br>
-        <button data-test='refresh-btn' onClick={this._refresh.bind(this)}>Refresh</button>
+          <button className="action-btn" data-test='refresh-btn' onClick={this._refresh.bind(this)}>
+            <RefreshIcon/>
+          </button>
         <Timer time={this.state.time}/>
-        <button data-test='toggle-btn' onClick={this._togglePlay.bind(this)}>
-          Play | Pause
-        </button>
+          <button className="action-btn" data-test='toggle-btn' onClick={this._togglePlay.bind(this)}>
+            <PlayIcon/>
+          </button>
         <br></br>
         <span data-test='counter'>{'#' + this.state.counter}</span>
       </>

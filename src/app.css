@@ -1,7 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+:root {
+  --primary-light: #8abdff;
+  --primary: #6d5dfc;
+  --primary-dark: #5b0eeb;
+  --white: #FFFFFF;
+  --greyLight-1: #E4EBF5;
+  --greyLight-2: #c8d0e7;
+  --greyLight-3: #bec8e4;
+  --greyDark: #9baacf;
+}
+
 * {
   font-family: 'Montserrat', sans-serif;
+  background: var(--greyLight-1);
 }
 
 .tab-btn {
@@ -10,18 +22,51 @@
   font-weight: bold;
   padding: 10px 20px 10px;
   border-radius: 10px 10px 0 0;
-  transition: all .5s ease;
-  color: #95999c;
-  border-bottom: 2px solid #f0f0f0;
+  color: var(--greyDark);
+  border-bottom: 2px solid var(--greyLight-2);
+  transition: 
+    box-shadow .8s ease,
+    border .8s ease,
+    color .5s ease;
 }
 
 .tab-btn:hover {
-  background-color: #f0f0f086;
-  color: #BC4749;
+  color: var(--primary-dark);
   cursor: pointer;
 }
 
-.tab-btn---current, .tab-btn---current:hover {
-  color: #6A994E;
-  border-bottom: 2px solid #A7C957;
+.tab-btn:active {
+  box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+  color: var(--primary);
 }
+
+.tab-btn---current, .tab-btn---current:hover {
+  color: var(--primary-dark);
+  border-bottom: 2px solid var(--primary);
+  box-shadow: 0.3rem 0.3rem 0.6rem #c8d0e7, -0.2rem -0.2rem 0.5rem #fff;
+}
+
+/*
+.action-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all .5s ease;
+  border: none;
+  background: var(--greyLight-1);
+  box-shadow: 0.3rem 0.3rem 0.6rem #c8d0e7, -0.2rem -0.2rem 0.5rem #fff;
+  padding: 15px;
+  border-radius: 50%;
+  fill: var(--greyDark);
+  cursor: pointer;
+}
+
+.action-btn:hover {
+  fill: var(--primary);
+}
+
+.action-btn:active {
+  box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+}
+*/
