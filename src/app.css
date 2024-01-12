@@ -16,6 +16,8 @@
   background: var(--greyLight-1);
 }
 
+/* TABS BUTTONS */
+
 .tab-btn {
   background: none;
   border: none;
@@ -24,7 +26,7 @@
   border-radius: 10px 10px 0 0;
   color: var(--greyDark);
   border-bottom: 2px solid var(--greyLight-2);
-  transition: 
+  transition:
     box-shadow .8s ease,
     border .8s ease,
     color .5s ease;
@@ -43,30 +45,30 @@
 .tab-btn---current, .tab-btn---current:hover {
   color: var(--primary-dark);
   border-bottom: 2px solid var(--primary);
-  box-shadow: 0.3rem 0.3rem 0.6rem #c8d0e7, -0.2rem -0.2rem 0.5rem #fff;
+  box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
 }
 
-/*
+/* ACTION BUTTONS */
+
 .action-btn {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: all .5s ease;
   border: none;
-  background: var(--greyLight-1);
-  box-shadow: 0.3rem 0.3rem 0.6rem #c8d0e7, -0.2rem -0.2rem 0.5rem #fff;
+  box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
   padding: 15px;
   border-radius: 50%;
-  fill: var(--greyDark);
+  fill: var(--primary);
   cursor: pointer;
+  transition: all .5s ease;
+  margin: 20px;
 }
 
 .action-btn:hover {
-  fill: var(--primary);
+  fill: var(--primary-dark);
 }
 
 .action-btn:active {
   box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
 }
-*/

@@ -3,15 +3,15 @@ import Timer from "./components/timer/Timer";
 import "./app.css";
 import RefreshIcon from "./icons/refresh.svg?react";
 import PlayIcon from "./icons/play.svg?react";
+import PauseIcon from "./icons/pause.svg?react";
 
 class App extends React.Component {
 
-  shouldCountDown = false;
   currentModeTime = 1500;
 
   constructor() {
     super();
-    this.state = {time: 1500, counter: 0};
+    this.state = {time: 1500, counter: 0, shouldCountDown: false};
   };
 
   componentDidMount() {
@@ -22,11 +22,11 @@ class App extends React.Component {
   _startTimer() {
     setInterval(() => {
 
-      if(this.shouldCountDown) {
+      if(this.state.shouldCountDown) {
 
         if(!this.state.time) {
 
-          this.shouldCountDown = false;
+          this.setState({shouldCountDown: false});
           this.setState({counter: this.state.counter + 1});
 
         } else {
@@ -40,17 +40,17 @@ class App extends React.Component {
 
   _refresh() {
     this.setState({time: this.currentModeTime});
-    this.shouldCountDown = false;
+    this.setState({shouldCountDown: false});
   };
 
   _togglePlay() {
-    this.shouldCountDown = !this.shouldCountDown;
+    this.setState({shouldCountDown: !this.state.shouldCountDown});
   };
 
   _pomodoro(totalModeTime) {
     this.setState({time: totalModeTime});
     this.currentModeTime = totalModeTime;
-    this.shouldCountDown = false;
+    this.setState({shouldCountDown: false});
   };
 
   _currentTab() {
@@ -82,7 +82,7 @@ class App extends React.Component {
           </button>
         <Timer time={this.state.time}/>
           <button className="action-btn" data-test='toggle-btn' onClick={this._togglePlay.bind(this)}>
-            <PlayIcon/>
+            {this.state.shouldCountDown ? <PauseIcon/> : <PlayIcon/>}
           </button>
         <br></br>
         <span data-test='counter'>{'#' + this.state.counter}</span>
