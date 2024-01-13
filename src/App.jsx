@@ -85,7 +85,7 @@ class App extends React.Component {
             {this.state.shouldCountDown ? <PauseIcon/> : <PlayIcon/>}
           </button>
         <br></br>
-        <span data-test='counter'>{'#' + this.state.counter}</span>
+        <span className="counter" data-test='counter'>{'#' + this.state.counter}</span>
       </>
   )}
 };
