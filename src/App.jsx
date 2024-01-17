@@ -73,19 +73,24 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <button className="tab-btn tab-btn---current" data-test='focus-btn' onClick={() => this._pomodoro(1500)}>Focus Time</button>
-        <button className="tab-btn" data-test='short-break-btn' onClick={() => this._pomodoro(300)}>Short Break</button>
-        <button className="tab-btn" data-test='long-break-btn' onClick={() => this._pomodoro(900)}>Long Break</button>
-        <br></br>
+        <div className="tab-container">
+          <button className="tab-btn tab-btn---current" data-test='focus-btn' onClick={() => this._pomodoro(1500)}>Focus</button>
+          <button className="tab-btn" data-test='short-break-btn' onClick={() => this._pomodoro(300)}>Break</button>
+          <button className="tab-btn" data-test='long-break-btn' onClick={() => this._pomodoro(900)}>Interval</button>
+        </div>
+
+        <div className="main-container">
           <button className="action-btn" data-test='refresh-btn' onClick={this._refresh.bind(this)}>
             <RefreshIcon/>
           </button>
-        <Timer time={this.state.time}/>
+          <Timer time={this.state.time}/>
           <button className="action-btn" data-test='toggle-btn' onClick={this._togglePlay.bind(this)}>
             {this.state.shouldCountDown ? <PauseIcon/> : <PlayIcon/>}
           </button>
-        <br></br>
-        <span className="counter" data-test='counter'>{'#' + this.state.counter}</span>
+        </div>
+
+          <p className="counter" data-test='counter'>{'#' + this.state.counter}</p>
+
       </>
   )}
 };
