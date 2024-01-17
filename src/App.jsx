@@ -91,6 +91,7 @@ class App extends React.Component {
 
           <p className="counter" data-test='counter'>{'#' + this.state.counter}</p>
 
+        <footer className="footer">• Developed by <a className="footer__link" href="https://github.com/SabrinaBarros">Sabrina Barros</a> •</footer>
       </>
   )}
 };

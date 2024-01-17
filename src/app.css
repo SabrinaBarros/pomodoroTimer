@@ -24,6 +24,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
 }
 
 #root {
@@ -127,6 +128,40 @@ body {
   font-weight: 600;
   text-align: center;
   margin: 0;
+}
+
+/* FOOTER */
+
+.footer, .footer__link {
+  color: #fff;
+}
+
+.footer {
+  /*background-image: linear-gradient(45deg, var(--primary), var(--primary-dark));
+  background-image: linear-gradient(45deg, #3f3e3e, #3f3e3e);*/
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  box-sizing: border-box;
+  color: #3f3e3e;
+}
+
+.footer__link {
+  color: #3f3e3e;
+  color: #5b0eeb;
+  text-decoration-line: none;
+  transition: all .4s;
+  background: none;
+}
+
+.footer__link:hover {
+  color: #6d5dfc;
+  cursor: pointer;
 }
 
 /* SMARTPHONE/TABLETS */
