@@ -1,4 +1,4 @@
-import React from "react";
+import React, {createRef} from "react";
 import Timer from "./components/timer/Timer";
 import "./app.css";
 import RefreshIcon from "./icons/refresh.svg?react";
@@ -8,6 +8,7 @@ import PauseIcon from "./icons/pause.svg?react";
 class App extends React.Component {
 
   currentModeTime = 1500;
+  actionButtonRef = createRef();
 
   constructor() {
     super();
@@ -28,6 +29,7 @@ class App extends React.Component {
 
           this.setState({shouldCountDown: false});
           this.setState({counter: this.state.counter + 1});
+          this.actionButtonRef.current.disabled = true;
 
         } else {
           this.setState({time: this.state.time - 1});
@@ -41,6 +43,7 @@ class App extends React.Component {
   _refresh() {
     this.setState({time: this.currentModeTime});
     this.setState({shouldCountDown: false});
+    this.actionButtonRef.current.disabled = false;
   };
 
   _togglePlay() {
@@ -51,6 +54,7 @@ class App extends React.Component {
     this.setState({time: totalModeTime});
     this.currentModeTime = totalModeTime;
     this.setState({shouldCountDown: false});
+    this.actionButtonRef.current.disabled = false;
   };
 
   _currentTab() {
@@ -84,7 +88,7 @@ class App extends React.Component {
             <RefreshIcon/>
           </button>
           <Timer time={this.state.time}/>
-          <button className="action-btn" data-test='toggle-btn' onClick={this._togglePlay.bind(this)}>
+          <button ref={this.actionButtonRef} className="action-btn" data-test='toggle-btn' onClick={this._togglePlay.bind(this)}>
             {this.state.shouldCountDown ? <PauseIcon/> : <PlayIcon/>}
           </button>
         </div>
