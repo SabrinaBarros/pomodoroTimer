@@ -118,18 +118,6 @@ body {
   color: #3f3e3e;
 }
 
-/* COUNTER */
-
-.counter {
-  font-family: "Montserrat", sans-serif;
-  letter-spacing: 5px;
-  font-size: 20px;
-  color: var(--primary-dark);
-  font-weight: 600;
-  text-align: center;
-  margin: 0;
-}
-
 /* FOOTER */
 
 .footer, .footer__link {
@@ -198,7 +186,4 @@ body {
     font-size: 20px;
   }
 
-  .counter {
-    font-size: 32px;
-  }
 }

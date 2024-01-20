@@ -12,7 +12,7 @@ class App extends React.Component {
 
   constructor() {
     super();
-    this.state = {time: 1500, counter: 0, shouldCountDown: false};
+    this.state = {time: 1500, shouldCountDown: false};
   };
 
   componentDidMount() {
@@ -28,7 +28,6 @@ class App extends React.Component {
         if(!this.state.time) {
 
           this.setState({shouldCountDown: false});
-          this.setState({counter: this.state.counter + 1});
           this.actionButtonRef.current.disabled = true;
 
         } else {
@@ -93,11 +92,10 @@ class App extends React.Component {
           </button>
         </div>
 
-          <p className="counter" data-test='counter'>{'#' + this.state.counter}</p>
-
         <footer className="footer">• Developed by <a className="footer__link" href="https://github.com/SabrinaBarros">Sabrina Barros</a> •</footer>
       </>
   )}
+
 };
 
 export default App
