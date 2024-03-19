@@ -1,4 +1,4 @@
-import React, {createRef} from "react";
+import React, { createRef } from "react";
 import Timer from "./components/timer/Timer";
 import "./app.css";
 import RefreshIcon from "./icons/refresh.svg?react";
@@ -12,7 +12,7 @@ class App extends React.Component {
 
   constructor() {
     super();
-    this.state = {time: 1500, shouldCountDown: false};
+    this.state = { time: 1500, shouldCountDown: false };
   };
 
   componentDidMount() {
@@ -23,15 +23,15 @@ class App extends React.Component {
   _startTimer() {
     setInterval(() => {
 
-      if(this.state.shouldCountDown) {
+      if (this.state.shouldCountDown) {
 
-        if(!this.state.time) {
+        if (!this.state.time) {
 
-          this.setState({shouldCountDown: false});
+          this.setState({ shouldCountDown: false });
           this.actionButtonRef.current.disabled = true;
 
         } else {
-          this.setState({time: this.state.time - 1});
+          this.setState({ time: this.state.time - 1 });
         }
 
       }
@@ -40,19 +40,19 @@ class App extends React.Component {
   };
 
   _refresh() {
-    this.setState({time: this.currentModeTime});
-    this.setState({shouldCountDown: false});
+    this.setState({ time: this.currentModeTime });
+    this.setState({ shouldCountDown: false });
     this.actionButtonRef.current.disabled = false;
   };
 
   _togglePlay() {
-    this.setState({shouldCountDown: !this.state.shouldCountDown});
+    this.setState({ shouldCountDown: !this.state.shouldCountDown });
   };
 
   _pomodoro(totalModeTime) {
-    this.setState({time: totalModeTime});
+    this.setState({ time: totalModeTime });
     this.currentModeTime = totalModeTime;
-    this.setState({shouldCountDown: false});
+    this.setState({ shouldCountDown: false });
     this.actionButtonRef.current.disabled = false;
   };
 
@@ -84,17 +84,18 @@ class App extends React.Component {
 
         <div className="main-container">
           <button className="action-btn" data-test='refresh-btn' onClick={this._refresh.bind(this)}>
-            <RefreshIcon/>
+            <RefreshIcon />
           </button>
-          <Timer time={this.state.time}/>
+          <Timer time={this.state.time} />
           <button ref={this.actionButtonRef} className="action-btn" data-test='toggle-btn' onClick={this._togglePlay.bind(this)}>
-            {this.state.shouldCountDown ? <PauseIcon/> : <PlayIcon/>}
+            {this.state.shouldCountDown ? <PauseIcon /> : <PlayIcon />}
           </button>
         </div>
 
-        <footer className="footer">• Developed by <a className="footer__link" href="https://github.com/SabrinaBarros">Sabrina Barros</a> •</footer>
+        <footer className="footer">• Developed by <a className="footer__link" href="https://github.com/SabrinaBarros" target="_blank" rel="noreferrer">Sabrina Barros</a> and <a className="footer__link" href="https://github.com/SabrinaBarros/pomodoroTimer/graphs/contributors" target="_blank" rel="noreferrer">Contributors</a> •</footer>
       </>
-  )}
+    )
+  }
 
 };
 
